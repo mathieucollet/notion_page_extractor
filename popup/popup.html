@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notion to TOON</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Notion → TOON</h1>
+    </header>
+
+    <!-- Not Configured State -->
+    <section id="state-not-configured" class="state hidden">
+      <div class="message warning">
+        <p>API key not configured</p>
+        <p class="hint">Set your Notion API key in the extension options.</p>
+      </div>
+      <button id="btn-open-options" class="btn btn-secondary">Open Options</button>
+    </section>
+
+    <!-- Not a Notion Page State -->
+    <section id="state-not-notion" class="state hidden">
+      <div class="message info">
+        <p>Not a Notion page</p>
+        <p class="hint">Navigate to a Notion page to extract its content.</p>
+      </div>
+    </section>
+
+    <!-- Ready State -->
+    <section id="state-ready" class="state hidden">
+      <div class="page-info">
+        <span class="label">Page ID:</span>
+        <code id="page-id"></code>
+      </div>
+      <button id="btn-extract" class="btn btn-primary">Extract to TOON</button>
+    </section>
+
+    <!-- Loading State -->
+    <section id="state-loading" class="state hidden">
+      <div class="spinner"></div>
+      <p>Extracting page content...</p>
+    </section>
+
+    <!-- Result State -->
+    <section id="state-result" class="state hidden">
+      <div class="result-header">
+        <span id="result-title"></span>
+        <button id="btn-copy" class="btn btn-small btn-primary">Copy</button>
+      </div>
+      <pre id="result-preview"></pre>
+      <div id="copy-feedback" class="feedback hidden">Copied to clipboard!</div>
+      <button id="btn-extract-again" class="btn btn-secondary">Extract Again</button>
+    </section>
+
+    <!-- Error State -->
+    <section id="state-error" class="state hidden">
+      <div class="message error">
+        <p id="error-message"></p>
+      </div>
+      <button id="btn-retry" class="btn btn-secondary">Retry</button>
+    </section>
+
+    <footer>
+      <a href="#" id="link-options">Options</a>
+    </footer>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
